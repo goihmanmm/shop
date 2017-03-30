@@ -23,5 +23,42 @@ namespace shop
         {
             InitializeComponent();
         }
+
+        clothes element = new clothes("x", 'm', "red", 1);
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            element.read();
+
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            main.Items.Clear();
+            List<clothes> BD = new List<clothes>();
+
+            BD = element.get();
+            foreach (clothes element in BD)
+            {
+                main.Items.Add(element.show());
+            } 
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            show a = new show();
+            a.Show();
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            List<clothes> BD = new List<clothes>();
+            BD=element.getsearch();
+            foreach (clothes element in BD)
+            {
+               main.Items.Add(element.show());
+            }
+            
+        }
     }
 }

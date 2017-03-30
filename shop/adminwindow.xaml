@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:shop"
         mc:Ignorable="d"
-        Title="adminwindow" Height="300" Width="300">
+        Title="adminwindow" Height="579" Width="1020">
     <Grid>
-        
+        <ListBox x:Name="main" HorizontalAlignment="Left" Height="446" VerticalAlignment="Top" Width="620" Margin="340,46,0,0" Background="#FFF5FFFD"/>
+        <Button x:Name="button" Content="Считать базу данных" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,46,0,0" Height="40" Background="#FFFFE8E8" Click="button_Click"/>
+        <Button x:Name="button1" Content="Вывести" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,91,0,0" Height="39" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,166,0,0" Height="40" Click="button2_Click"/>
+        <Button x:Name="button3" Content="Вывести отфильтрованные товары" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,211,0,0" Height="35" Click="button3_Click"/>
     </Grid>
 </Window>
