@@ -20,9 +20,9 @@ namespace shop
             set { type = value; }
         }
 
-        private char size;
+        private string size;
 
-        public char Size
+        public string Size
         {
             get { return size; }
             set { size = value; }
@@ -52,7 +52,7 @@ namespace shop
         }
 
 
-        public clothes(string type, char size, string color, int price)
+        public clothes(string type, string size, string color, int price)
         {
             this.type = type;
             this.size = size;
@@ -63,12 +63,13 @@ namespace shop
 
         public void read()
         {
+            BD.Clear();
           
-            string[] line = File.ReadAllLines("C:\\Users\\миша\\Desktop\\вышка\\программирование\\проект\\shop\\bd.txt", Encoding.GetEncoding(1251));
+            string[] line = File.ReadAllLines("bd.txt", Encoding.GetEncoding(1251));
             for (int i = 0; i < line.Length; i++)
             {
                 string[] mas = line[i].Split(' ');
-                clothes element = new clothes(mas[0], char.Parse(mas[1]), (mas[2]), int.Parse(mas[3]));
+                clothes element = new clothes(mas[0], (mas[1]), (mas[2]), int.Parse(mas[3]));
                 BD.Add(element);
             }
 
@@ -96,7 +97,7 @@ namespace shop
             SE = BD;
             foreach (clothes element in SE)
             {
-                if ((element.type == t || t == "0") & (element.price == int.Parse(p) || p == "0") & (element.color == c || c == "0") & (element.size == char.Parse(s) || s == "0"))
+                if ((element.type == t || t == "0") & (element.price == int.Parse(p) || p == "0") & (element.color == c || c == "0") & (element.size == (s) || s == "0"))
                 {
                     FSE.Add(element);
                 }
@@ -106,7 +107,26 @@ namespace shop
         {
             return FSE;
         }
-    
+
+
+        public string write()
+        {
+            return string.Format("{0} {1} {2} {3}", type, size, color, price);
+        }
+        public void add()
+            {
+            using (FileStream fs = new FileStream("bd.txt", FileMode.Append))
+         
+                 {
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
+                     {
+                         sw.WriteLine(string.Format("{0} {1} {2} {3}", type, size, color, price));
+                     }
+                fs.Close();
+                 };
+           
+            }
+
 
     }
 }

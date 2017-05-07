@@ -15,29 +15,19 @@ using System.Windows.Shapes;
 namespace shop
 {
     /// <summary>
-    /// Логика взаимодействия для show.xaml
+    /// Логика взаимодействия для add.xaml
     /// </summary>
-    public partial class show : Window
+    public partial class add : Window
     {
-        public show()
+        public add()
         {
             InitializeComponent();
         }
 
-      
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            clothes element = new clothes("x", "m", "red", 1);
-         
-
-            string t, p, c, s;
-            t = type.Text;
-            p = price.Text;
-            c = color.Text;
-            s = size.Text;
-
-            
-            element.search(t,p,c,s);
+            clothes element = new clothes(type.Text, size.Text, color.Text, int.Parse(price.Text) );
+            element.add();
             Close();
         }
     }

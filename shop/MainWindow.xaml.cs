@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace shop
 {
@@ -20,6 +22,7 @@ namespace shop
     /// </summary>
     public partial class MainWindow : Window
     {
+        SqlConnection conn;
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +44,21 @@ namespace shop
                 a.Show();
                 Close();
             }
+        }
+
+        private async void button5_Click(object sender, RoutedEventArgs e)
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\миша\Desktop\вышка\программирование\проект\shop\shop\Database1.mdf;Integrated Security=True";
+            conn = new SqlConnection(connectionString);
+
+            await conn.OpenAsync();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO [Product](type, size)VALUES(@type, @size)",conn);
+            cmd.Parameters.Add("@type", SqlDbType.NVarChar, 50).Value = "Свитшот";
+            cmd.Parameters.Add("@size", SqlDbType.NVarChar, 50).Value = "XL";
+
+            await cmd.ExecuteNonQueryAsync();
+            conn.Close();
         }
     }
 }
