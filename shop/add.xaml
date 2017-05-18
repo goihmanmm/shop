@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:shop"
         mc:Ignorable="d"
-        Title="add" Height="331.579" Width="300">
+        Title="add" Height="421.446" Width="300">
     <Grid>
-        <TextBox x:Name="type" HorizontalAlignment="Left" Height="32" Margin="10,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" Text="Введите тип изделия"/>
-        <TextBox x:Name="size" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" Text="Введите размер" VerticalAlignment="Top" Width="272" Margin="10,76,0,0"/>
-        <TextBox x:Name="color" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="Введите цвет" VerticalAlignment="Top" Width="272" Margin="10,134,0,0"/>
-        <TextBox x:Name="price" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="Введите цену" VerticalAlignment="Top" Width="272" Margin="10,187,0,0"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="88,237,0,0" Height="54" Click="button_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="45*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="type" HorizontalAlignment="Left" Height="32" Margin="10,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" Text="Введите тип изделия" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="size" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" Text="Введите размер" VerticalAlignment="Top" Width="272" Margin="10,76,0,0" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="color" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="Введите цвет" VerticalAlignment="Top" Width="272" Margin="10,134,0,0" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="price" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="Введите цену" VerticalAlignment="Top" Width="272" Margin="10,187,0,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="86,296,0,0" Height="54" Click="button_Click" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="29" Margin="10,244,0,0" TextWrapping="Wrap" Text="Введите количество" VerticalAlignment="Top" Width="272" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -26,9 +26,9 @@ namespace shop
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            clothes element = new clothes(type.Text, size.Text, color.Text, int.Parse(price.Text) );
+            clothes element = new clothes(type.Text, size.Text, color.Text, int.Parse(price.Text), int.Parse(quantity.Text));
             element.add();
-            Close();
+            
         }
     }
 }

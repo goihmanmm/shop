@@ -24,21 +24,21 @@ namespace shop
             InitializeComponent();
         }
 
-        clothes element = new clothes("x", "m", "red", 1);
+       
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            element.read();
+            clothes.read();
 
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            element.read();
+            clothes.read();
             main.Items.Clear();
             List<clothes> BD = new List<clothes>();
 
-            BD = element.get();
+            BD = clothes.get();
             foreach (clothes element in BD)
             {
                 main.Items.Add(element.show());
@@ -47,28 +47,71 @@ namespace shop
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            element.read();
-            show a = new show();
-            a.Show();
-        }
+            clothes.read();
+            //show a = new show();
+            //a.Show();
 
-        private void button3_Click(object sender, RoutedEventArgs e)
-        {
+            string t, p, c, s;
+            t = type.Text;
+            p = price.Text;
+            c = color.Text;
+            s = size.Text;
+
+
+            clothes.search(t, p, c, s);
+
             main.Items.Clear();
             List<clothes> BD = new List<clothes>();
-            BD=element.getsearch();
+            BD = clothes.getsearch();
             foreach (clothes element in BD)
             {
-               main.Items.Add(element.show());
+                main.Items.Add(element.show());
             }
-            
+
         }
+
+        //private void button3_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //main.Items.Clear();
+        //    //List<clothes> BD = new List<clothes>();
+        //    //BD=clothes.getsearch();
+        //    //foreach (clothes element in BD)
+        //    //{
+        //    //   main.Items.Add(element.show());
+        //    //}
+            
+        //}
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            add a = new add();
-            a.Show();
+            clothes element = new clothes(type2.Text, size2.Text, color2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
+            element.add();
 
+
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            clothes element = new clothes(type2.Text, size2.Text, color2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
+            element.delete();
+        }
+
+        private void clear_Click(object sender, RoutedEventArgs e)
+        {
+            main.Items.Clear();
+        }
+
+        private void log_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow a = new MainWindow();
+            a.Show();
+            Close();
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Clear a = new Clear();
+            a.Show();
         }
     }
 }

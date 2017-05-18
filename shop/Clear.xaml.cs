@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,30 +16,21 @@ using System.Windows.Shapes;
 namespace shop
 {
     /// <summary>
-    /// Логика взаимодействия для show.xaml
+    /// Логика взаимодействия для Clear.xaml
     /// </summary>
-    public partial class show : Window
+    public partial class Clear : Window
     {
-        public show()
+        public Clear()
         {
             InitializeComponent();
         }
 
-      
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            clothes element = new clothes("x", "m", "red", 1);
-         
-
-            string t, p, c, s;
-            t = type.Text;
-            p = price.Text;
-            c = color.Text;
-            s = size.Text;
-
-            
-            element.search(t,p,c,s);
-            Close();
+            FileStream fs = new FileStream("bd.txt", FileMode.Create);
+            fs.Close();
+            FileStream fk = new FileStream("log.txt", FileMode.Create);
+            fk.Close();
         }
     }
 }

@@ -7,11 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="519" Width="801">
     <Grid Margin="2,0,0,5">
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500" Margin="129,288,0,0" Height="104" Click="button_Click"/>
+        <Button x:Name="button" Content="Sign in" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Margin="414,306,0,0" Height="64" Click="button_Click" FontSize="18"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Margin="129,105,0,0"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Margin="129,216,0,0"/>
         <Label x:Name="label" Content="Логин" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="129,46,0,0" Width="500" Height="44" Foreground="#FF0D0DE2" Background="#FFEACDEA"/>
         <Label x:Name="label_Copy" Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="129,160,0,0" Width="500" Height="44" Foreground="#FF0D0DE2" Background="#FFEACDEA"/>
+        <Button x:Name="button1" Content="Sign up" HorizontalAlignment="Left" Margin="168,306,0,0" VerticalAlignment="Top" Width="160" Height="64" Click="button1_Click" FontSize="18"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="129,226,0,0" Width="500"/>
+        <Label x:Name="label2" Content="Если вы еще не зарегистрированы, введите логин и пароль и нажмите &quot;Sign up&quot;" HorizontalAlignment="Left" Margin="111,397,0,0" VerticalAlignment="Top" Width="527" RenderTransformOrigin="0.5,0.5" FontSize="14">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.002"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
 
     </Grid>
 </Window>
