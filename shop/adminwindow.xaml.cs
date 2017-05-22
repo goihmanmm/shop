@@ -28,7 +28,7 @@ namespace shop
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+      
             logger.log("adminwindow вывести");
             clothes.read();
             main.Items.Clear();
@@ -49,14 +49,15 @@ namespace shop
             clothes.read();
             
 
-            string t, p, c, s;
+            string t, p, c, s, b;
             t = type.Text;
             p = price.Text;
             c = color.Text;
             s = size.Text;
+            b = bname.Text;
 
 
-            clothes.search(t, p, c, s);
+            clothes.search(t, p, c, s, b);
 
             main.Items.Clear();
             List<clothes> BD = new List<clothes>();
@@ -76,7 +77,7 @@ namespace shop
             logger.log("adminwindow добавить");
 
 
-            clothes element = new clothes(type2.Text, size2.Text, color2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
+            clothes element = new clothes(type2.Text, size2.Text, color2.Text, bname2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
             element.add();
 
 
@@ -87,7 +88,7 @@ namespace shop
 
 
             logger.log("adminwindow удалить");
-            clothes element = new clothes(type2.Text, size2.Text, color2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
+            clothes element = new clothes(type2.Text, size2.Text, color2.Text, bname2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
             element.delete();
         }
 
@@ -115,6 +116,12 @@ namespace shop
             logger.log("adminwindow очистить программу");
             Clear a = new Clear();
             a.Show();
+        }
+
+        private void brand_Click(object sender, RoutedEventArgs e)
+        {
+            brand b = new brand();
+            b.Show();
         }
     }
 }

@@ -50,14 +50,15 @@ namespace shop
             //show a = new show();
             //a.Show();
 
-            string t, p, c, s;
+            string t, p, c, s, b;
             t = type.Text;
             p = price.Text;
             c = color.Text;
             s = size.Text;
+            b = bname.Text;
 
 
-            clothes.search(t, p, c, s);
+            clothes.search(t, p, c, s, b);
 
             main.Items.Clear();
             List<clothes> BD = new List<clothes>();

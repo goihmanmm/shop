@@ -59,14 +59,21 @@ namespace shop
             set { quantity = value; }
         }
 
+        private string bname;
+
+        public string Bname
+        {
+            get { return bname; }
+            set { bname = value; }
+        }
 
 
-        public clothes(string type, string size, string color, int price, int quantity)
+        public clothes(string type, string size, string color, string bname, int price, int quantity)
         {
             this.type = type;
             this.size = size;
             this.color = color;
-
+            this.bname = bname;
             this.price = price;
             this.quantity = quantity;
         }
@@ -79,7 +86,7 @@ namespace shop
             for (int i = 0; i < line.Length; i++)
             {
                 string[] mas = line[i].Split(' ');
-                clothes element = new clothes(mas[0], (mas[1]), (mas[2]), int.Parse(mas[3]), int.Parse(mas[4]));
+                clothes element = new clothes(mas[0], (mas[1]), (mas[2]), mas[3], int.Parse(mas[4]), int.Parse(mas[5]));
                 BD.Add(element);
             }
 
@@ -87,7 +94,7 @@ namespace shop
         }
         public string show()
         {
-            return String.Format("Название изделия {0} Размер {1} Цвет {2} Цена {3} Количество {4}", type, size, color, price, quantity);
+            return String.Format("Название изделия: {0} Размер: {1} Цвет: {2}  Бренд: {3} Цена: {4} Количество: {5}", type, size, color, bname, price, quantity);
 
         }
 
@@ -99,7 +106,7 @@ namespace shop
 
         public static List<clothes> FSE = new List<clothes>();
 
-        public static void search(string t, string p, string c, string s)
+        public static void search(string t, string p, string c, string s, string b)
         {
             FSE.Clear();
             List<clothes> SE = new List<clothes>();
@@ -107,7 +114,7 @@ namespace shop
             SE = BD;
             foreach (clothes element in SE)
            {
-                if ((element.type == t || t == "0") & (element.price == int.Parse(p) || p == "0") & (element.color == c || c == "0") & (element.size == (s) || s == "0"))
+                if ((element.type == t || t == "0") & (element.price == int.Parse(p) || p == "0") & (element.color == c || c == "0") & (element.size == (s) || s == "0") &((element.bname == b || b == "0")))
                 {
                     FSE.Add(element);
                 }
@@ -132,12 +139,12 @@ namespace shop
 
                 foreach (clothes element in BD)
                 {
-                    if (element.type == type & element.size == size & element.color == color & element.price == price)
+                    if (element.type == type & element.size == size & element.color == color & element.price == price & element.bname==bname)
                     {
                         foreach (clothes e in BD)
                         {
 
-                            if ((e.type!= type) || (e.size != size) || ( e.color != color) || (e.price != price))
+                            if ((e.type!= type) || (e.size != size) || ( e.color != color) || (e.price != price) || (e.bname != bname))
                             {
 
                                 using (FileStream fs = new FileStream("bd.txt", FileMode.Create))
@@ -145,7 +152,7 @@ namespace shop
                                 {
                                     using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
                                     {
-                                        sw.WriteLine(string.Format("{0} {1} {2} {3} {4}", e.type, e.size, e.color, e.price, e.quantity));
+                                        sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", e.type, e.size, e.color,e.bname, e.price, e.quantity));
                                     }
                                     fs.Close();
                                 };
@@ -159,7 +166,7 @@ namespace shop
                         {
                             using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
                             {
-                                sw.WriteLine(string.Format("{0} {1} {2} {3} {4}", type, size, color, price, quantity+element.quantity));
+                                sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", type, size, color, bname, price, quantity+element.quantity));
                             }
                             fs.Close();
                         };
@@ -177,7 +184,7 @@ namespace shop
                 {
                     using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
                     {
-                        sw.WriteLine(string.Format("{0} {1} {2} {3} {4}", type, size, color, price, quantity));
+                        sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", type, size, color,bname, price, quantity));
                     }
                     fs.Close();
                 };
@@ -199,7 +206,7 @@ namespace shop
 
             foreach ( clothes element in BD)
             {
-                if ((element.type != this.type) || (element.size != this.size) || (element.color != this.color) || (element.price != this.price))
+                if ((element.type != this.type)|| (element.bname != this.bname) || (element.size != this.size) || (element.color != this.color) || (element.price != this.price))
                 {
                     using (FileStream fs = new FileStream("bd.txt", FileMode.Create))
                         fs.Close();
@@ -210,7 +217,7 @@ namespace shop
             foreach (clothes e in BD)
             {
 
-                if ((e.type != this.type) || (e.size != this.size) || (e.color !=this.color) || (e.price != this.price))
+                if ((e.type != this.type)|| (e.bname != this.bname) || (e.size != this.size) || (e.color !=this.color) || (e.price != this.price))
                 {
 
                     using (FileStream fs = new FileStream("bd.txt", FileMode.Append))
@@ -218,7 +225,7 @@ namespace shop
                     {
                         using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
                         {
-                            sw.WriteLine(string.Format("{0} {1} {2} {3} {4}", e.type, e.size, e.color, e.price, e.quantity));
+                            sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", e.type, e.size, e.color,e.bname, e.price, e.quantity));
                         }
                         fs.Close();
                     };
@@ -229,7 +236,7 @@ namespace shop
 
             foreach (clothes e in BD)
             {
-                if ((e.type == this.type) && (e.size == this.size) && (e.color == this.color) && (e.price == this.price) && (e.quantity - this.quantity >0))
+                if ((e.type == this.type)&& (e.bname == this.bname) && (e.size == this.size) && (e.color == this.color) && (e.price == this.price) && (e.quantity - this.quantity >0))
 
                 {
                     using (FileStream fs = new FileStream("bd.txt", FileMode.Append))
@@ -237,7 +244,7 @@ namespace shop
                     {
                         using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
                         {
-                            sw.WriteLine(string.Format("{0} {1} {2} {3} {4}", e.type, e.size, e.color, e.price, e.quantity - this.quantity));
+                            sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", e.type, e.size, e.color, e.bname, e.price, e.quantity - this.quantity));
                             sw.Close();
                         }
 

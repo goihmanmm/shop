@@ -13,16 +13,18 @@
         <ListBox x:Name="main" HorizontalAlignment="Left" Height="492" VerticalAlignment="Top" Width="620" Margin="340,46,0,0" Background="#FFF5FFFD"/>
         <Button x:Name="button1" Content="Вывести" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Margin="40,46,0,0" Height="39" Click="button1_Click"/>
         <Button x:Name="button2" Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Margin="40,104,0,0" Height="40" Click="button2_Click"/>
-        <TextBox x:Name="type" HorizontalAlignment="Left" Height="42" Margin="60,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
-        <TextBox x:Name="size" HorizontalAlignment="Left" Height="36" Margin="60,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
-        <TextBox x:Name="color" HorizontalAlignment="Left" Height="38" Margin="60,367,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
-        <TextBox x:Name="price" HorizontalAlignment="Left" Height="38" Margin="60,443,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
+        <TextBox x:Name="type" HorizontalAlignment="Left" Height="21" Margin="60,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
+        <TextBox x:Name="size" HorizontalAlignment="Left" Height="21" Margin="60,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
+        <TextBox x:Name="color" HorizontalAlignment="Left" Height="23" Margin="60,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
+        <TextBox x:Name="price" HorizontalAlignment="Left" Height="23" Margin="60,392,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Text="0"/>
         <Label x:Name="label" Content="Введите тип товара" HorizontalAlignment="Left" Margin="100,180,0,0" VerticalAlignment="Top" Width="116" Height="28"/>
-        <Label x:Name="label_Copy" Content="Введите размер" HorizontalAlignment="Left" Margin="100,260,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
-        <Label x:Name="label_Copy1" Content="Введите цвет" HorizontalAlignment="Left" Margin="100,334,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
-        <Label x:Name="label_Copy2" Content="Введите цену" HorizontalAlignment="Left" Margin="100,410,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
+        <Label x:Name="label_Copy" Content="Введите размер" HorizontalAlignment="Left" Margin="100,239,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
+        <Label x:Name="label_Copy1" Content="Введите цвет" HorizontalAlignment="Left" Margin="100,298,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
+        <Label x:Name="label_Copy2" Content="Введите цену" HorizontalAlignment="Left" Margin="100,359,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
         <Label x:Name="label1" Content="Если поле вас не интересует, оставьте &quot;0&quot;" HorizontalAlignment="Left" Margin="40,149,0,0" VerticalAlignment="Top" Width="240"/>
         <Button x:Name="button" Content="Сменить пользователя" HorizontalAlignment="Left" Margin="60,506,0,0" VerticalAlignment="Top" Width="198" Height="34" Background="#FF0DFBFB" Click="button_Click_1"/>
+        <TextBox x:Name="bname" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="198" Margin="60,450,0,0"/>
+        <Label x:Name="label_Copy3" Content="Введите название бренда" HorizontalAlignment="Left" Margin="100,420,0,0" VerticalAlignment="Top" Width="158" Height="28" TextOptions.TextHintingMode="Animated"/>
     </Grid>
 </Window>
 

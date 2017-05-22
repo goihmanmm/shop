@@ -73,6 +73,10 @@
     <Compile Include="add.xaml.cs">
       <DependentUpon>add.xaml</DependentUpon>
     </Compile>
+    <Compile Include="brand.cs" />
+    <Compile Include="brand.xaml.cs">
+      <DependentUpon>brand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clear.xaml.cs">
       <DependentUpon>Clear.xaml</DependentUpon>
     </Compile>
@@ -82,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="adminwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="brand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
