@@ -27,6 +27,8 @@ namespace shop
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+
+            logger.log("adminwindow удалить всё");
             FileStream fs = new FileStream("bd.txt", FileMode.Create);
             fs.Close();
             FileStream fk = new FileStream("log.txt", FileMode.Create);

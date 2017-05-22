@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace shop
 {
-    /// <summary>
-    /// Логика взаимодействия для adminwindow.xaml
-    /// </summary>
+    
     public partial class adminwindow : Window
     {
         public adminwindow()
@@ -26,14 +24,12 @@ namespace shop
 
        
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            clothes.read();
-
-        }
+       
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+
+            logger.log("adminwindow вывести");
             clothes.read();
             main.Items.Clear();
             List<clothes> BD = new List<clothes>();
@@ -47,9 +43,11 @@ namespace shop
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
+
+
+            logger.log("adminwindow поиск");
             clothes.read();
-            //show a = new show();
-            //a.Show();
+            
 
             string t, p, c, s;
             t = type.Text;
@@ -70,20 +68,14 @@ namespace shop
 
         }
 
-        //private void button3_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //main.Items.Clear();
-        //    //List<clothes> BD = new List<clothes>();
-        //    //BD=clothes.getsearch();
-        //    //foreach (clothes element in BD)
-        //    //{
-        //    //   main.Items.Add(element.show());
-        //    //}
-            
-        //}
+        
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
+
+            logger.log("adminwindow добавить");
+
+
             clothes element = new clothes(type2.Text, size2.Text, color2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
             element.add();
 
@@ -92,17 +84,26 @@ namespace shop
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+
+
+            logger.log("adminwindow удалить");
             clothes element = new clothes(type2.Text, size2.Text, color2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
             element.delete();
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)
         {
+
+
+            logger.log("adminwindow очистить");
             main.Items.Clear();
         }
 
         private void log_Click(object sender, RoutedEventArgs e)
         {
+
+
+            logger.log("adminwindow сменить пользователя");
             MainWindow a = new MainWindow();
             a.Show();
             Close();
@@ -110,6 +111,8 @@ namespace shop
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
+
+            logger.log("adminwindow очистить программу");
             Clear a = new Clear();
             a.Show();
         }

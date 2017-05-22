@@ -22,7 +22,7 @@
         <Label x:Name="label_Copy1" Content="Введите цвет" HorizontalAlignment="Left" Margin="100,334,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
         <Label x:Name="label_Copy2" Content="Введите цену" HorizontalAlignment="Left" Margin="100,410,0,0" VerticalAlignment="Top" Width="116" Height="28" TextOptions.TextHintingMode="Animated"/>
         <Label x:Name="label1" Content="Если поле вас не интересует, оставьте &quot;0&quot;" HorizontalAlignment="Left" Margin="40,149,0,0" VerticalAlignment="Top" Width="240"/>
-        <Button x:Name="button" Content="Сменить пользователя" HorizontalAlignment="Left" Margin="60,506,0,0" VerticalAlignment="Top" Width="198" Height="34" Background="#FF0DFBFB"/>
+        <Button x:Name="button" Content="Сменить пользователя" HorizontalAlignment="Left" Margin="60,506,0,0" VerticalAlignment="Top" Width="198" Height="34" Background="#FF0DFBFB" Click="button_Click_1"/>
     </Grid>
 </Window>
 

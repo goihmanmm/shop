@@ -8,8 +8,8 @@
         Title="adminwindow" Height="543" Width="1285.5">
     <Grid>
         <ListBox x:Name="main" HorizontalAlignment="Left" Height="468" VerticalAlignment="Top" Width="662" Margin="606,10,0,0" Background="#FFF5FFFD"/>
-        <Button x:Name="button1" Content="Вывести" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,43,0,0" Height="39" Click="button1_Click" FontSize="14"/>
-        <Button x:Name="button2" Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,106,0,0" Height="40" Click="button2_Click" FontSize="14"/>
+        <Button x:Name="show" Content="Вывести" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,43,0,0" Height="39" Click="button1_Click" FontSize="14"/>
+        <Button x:Name="search" Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,106,0,0" Height="40" Click="button2_Click" FontSize="14"/>
         <Button x:Name="add" Content="Добавить товар" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,169,0,0" Height="40" Click="add_Click" FontSize="14"/>
         <Button x:Name="delete" Content="Удалить выбранный товар" HorizontalAlignment="Left" Margin="60,231,0,0" VerticalAlignment="Top" Width="198" Height="46" Click="delete_Click" FontSize="14"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="468" Margin="314,10,0,0" VerticalAlignment="Top" Width="262">

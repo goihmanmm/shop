@@ -108,6 +108,7 @@
     <Compile Include="guestwindow.xaml.cs">
       <DependentUpon>guestwindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="logger.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

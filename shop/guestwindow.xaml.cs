@@ -26,15 +26,11 @@ namespace shop
 
      
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            clothes.read();
-
-        }
+       
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            logger.log("guestwindow вывести");
             clothes.read();
             main.Items.Clear();
             List<clothes> BD = new List<clothes>();
@@ -48,6 +44,8 @@ namespace shop
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
+
+            logger.log("adminwindow показать");
             clothes.read();
             //show a = new show();
             //a.Show();
@@ -68,6 +66,14 @@ namespace shop
             {
                 main.Items.Add(element.show());
             }
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            logger.log("adminwindow сменить пользователя");
+            MainWindow a = new MainWindow();
+            a.Show();
+            Close();
         }
 
         //private void button3_Click(object sender, RoutedEventArgs e)

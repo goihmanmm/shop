@@ -24,7 +24,7 @@ namespace shop
     /// </summary>
     public partial class MainWindow : Window
     {
-        SqlConnection conn;
+      
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +35,13 @@ namespace shop
         private void button_Click(object sender, RoutedEventArgs e)
 
         {
+
+
+            using (FileStream fs = new FileStream("logger.txt", FileMode.Create))
+
+            { fs.Close(); }
+
+            logger.log("sign in");
 
             if (textBox.Text == "guest")
             {
@@ -80,6 +87,15 @@ namespace shop
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+
+            using (FileStream fs = new FileStream("logger.txt", FileMode.Create))
+
+            { fs.Close(); }
+            
+            logger.log("sign up");
+
+
+
             string[] line = File.ReadAllLines("log.txt", Encoding.GetEncoding(1251));
             if (line.Count() == 0)
             {
@@ -105,6 +121,38 @@ namespace shop
 
         }
 
+    
+
+
+        private void sign_in_MouseLeave(object sender, MouseEventArgs e)
+        {
+            sign_in.FontSize = 18;
+        }
+
+        private void sign_in_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            sign_in.FontSize = 24;
+        }
+
+        private void sign_up_MouseEnter(object sender, MouseEventArgs e)
+        {
+            sign_up.FontSize = 24;
+        }
+
+        private void sign_up_MouseLeave(object sender, MouseEventArgs e)
+        {
+            sign_up.FontSize = 18;
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+
+
+
         //private async void button5_Click(object sender, RoutedEventArgs e)
         //{
         //    string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\миша\Desktop\вышка\программирование\проект\shop\shop\Database1.mdf;Integrated Security=True";
@@ -119,6 +167,6 @@ namespace shop
         //    await cmd.ExecuteNonQueryAsync();
         //    conn.Close();
         //}
-    
+
     }
 }
