@@ -77,6 +77,7 @@
     <Compile Include="brand.xaml.cs">
       <DependentUpon>brand.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Buyer.cs" />
     <Compile Include="Clear.xaml.cs">
       <DependentUpon>Clear.xaml</DependentUpon>
     </Compile>

@@ -33,6 +33,13 @@ namespace shop
             fs.Close();
             FileStream fk = new FileStream("log.txt", FileMode.Create);
             fk.Close();
+            FileStream fn = new FileStream("buyers.txt", FileMode.Create);
+            fk.Close();
+            FileStream fl = new FileStream("brand.txt", FileMode.Create);
+            fk.Close();
+            Close();
+            adminwindow a = new adminwindow();
+            a.Close();
         }
     }
 }

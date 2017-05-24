@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace shop
 {
@@ -114,7 +115,7 @@ namespace shop
             SE = BD;
             foreach (clothes element in SE)
            {
-                if ((element.type == t || t == "0") & (element.price == int.Parse(p) || p == "0") & (element.color == c || c == "0") & (element.size == (s) || s == "0") &((element.bname == b || b == "0")))
+                if ((element.type == t || t=="0") & (element.price == int.Parse(p) || p == "0") & (element.color == c || c == "0") & (element.size == (s) || s == "0") &((element.bname == b || b == "0")))
                 {
                     FSE.Add(element);
                 }
@@ -204,14 +205,14 @@ namespace shop
 
 
 
-            foreach ( clothes element in BD)
-            {
-                if ((element.type != this.type)|| (element.bname != this.bname) || (element.size != this.size) || (element.color != this.color) || (element.price != this.price))
-                {
+            //foreach ( clothes element in BD)
+            //{
+            //    if ((element.type != this.type)|| (element.bname != this.bname) || (element.size != this.size) || (element.color != this.color) || (element.price != this.price))
+            //    {
                     using (FileStream fs = new FileStream("bd.txt", FileMode.Create))
                         fs.Close();
-                }
-            }
+            //    }
+            //}
 
 
             foreach (clothes e in BD)
@@ -262,8 +263,96 @@ namespace shop
 
 
         }
-        
+        public static void buy(string t, string s, string c, string b, int p, int q)
+        {
+            clothes.read();
+
+
+
+            //foreach (clothes element in BD)
+            //{
+            //    if ((element.type != t) || (element.bname != b) || (element.size != s) || (element.color != c) || (element.price != p))
+            //    {
+                    using (FileStream fs = new FileStream("bd.txt", FileMode.Create))
+                        fs.Close();
+            //    }
+            //}
+
+
+            foreach (clothes e in BD)
+            {
+
+                if ((e.type != t) || (e.bname != b) || (e.size != s) || (e.color != c) || (e.price != p))
+                {
+
+                    using (FileStream fs = new FileStream("bd.txt", FileMode.Append))
+
+                    {
+                        using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
+                        {
+                            sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", e.type, e.size, e.color, e.bname, e.price, e.quantity));
+                        }
+                        fs.Close();
+                    };
+
+
+                }
+            }
+            bool k = false;
+            foreach (clothes e in BD)
+            {
+                if ((e.type == t) && (e.bname == b) && (e.size == s) && (e.color == c) && (e.price == p) && (e.quantity - q > 0))
+
+                {
+                    k = true;
+                    using (FileStream fs = new FileStream("bd.txt", FileMode.Append))
+
+                    {
+                        using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
+                        {
+                            sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", e.type, e.size, e.color, e.bname, e.price, e.quantity - q));
+                            sw.Close();
+                        }
+
+
+                        fs.Close();
+                    };
+                    }
+                }
+                
+                if(k==false)
+                {
+                    MessageBox.Show("На складе недостаточно единиц товара", "Невозможно выполнить заказ!", MessageBoxButton.OK);
+                    foreach (clothes eadding in BD)
+                    {
+                        if ((eadding.type == t) && (eadding.bname == b) && (eadding.size == s) && (eadding.color == c) && (eadding.price == p))
+                        {
+                            using (FileStream fs = new FileStream("bd.txt", FileMode.Append))
+
+                            {
+                                using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
+                                {
+                                    sw.WriteLine(string.Format("{0} {1} {2} {3} {4} {5}", eadding.type, eadding.size, eadding.color, eadding.bname, eadding.price, eadding.quantity));
+                                    sw.Close();
+                                }
+
+
+                                fs.Close();
+                            };
+                        }
+                    }
+                }
+
+
+
+
+
+
+            }
+
+
+        }
 
     }
 
-    }
+    

@@ -28,6 +28,10 @@ namespace shop
         public MainWindow()
         {
             InitializeComponent();
+
+            using (FileStream fs = new FileStream("logger.txt", FileMode.Create))
+
+            { fs.Close(); }
         }
 
 
@@ -35,72 +39,74 @@ namespace shop
         private void button_Click(object sender, RoutedEventArgs e)
 
         {
-
-
-            using (FileStream fs = new FileStream("logger.txt", FileMode.Create))
-
-            { fs.Close(); }
-
-            logger.log("sign in");
-
-            if (textBox.Text == "guest")
-            {
-                guestwindow a = new guestwindow();
-                a.Show();
-                Close();
-
-            }
-            else
+            try
             {
 
 
-                string[] line = File.ReadAllLines("log.txt", Encoding.GetEncoding(1251));
+                logger.log("sign in");
 
-
-                if (line.Count() == 0)
+                if (textBox.Text == "guest")
                 {
-                    MessageBox.Show("Введите логин и пароль для авторизации", "Вы вошли в первый раз", MessageBoxButton.OK);
+                    guestwindow a = new guestwindow();
+                    a.Show();
+                    Close();
 
                 }
                 else
                 {
 
-                    string[] mas = line[0].Split(' ');
 
-                    string password = Log.comparing(passwordBox.Password);
+                    string[] line = File.ReadAllLines("log.txt", Encoding.GetEncoding(1251));
 
-                    if (textBox.Text == mas[0] && mas[1] == password)
+
+                    if (line.Count() == 0)
+                    {
+                        MessageBox.Show("Введите логин и пароль для авторизации", "Вы вошли в первый раз", MessageBoxButton.OK);
+
+                    }
+                    else
                     {
 
+                        string[] mas = line[0].Split(' ');
+
+                        string password = Log.comparing(passwordBox.Password);
+
+                        if (textBox.Text == mas[0] && mas[1] == password)
+                        {
 
 
-                        adminwindow a = new adminwindow();
-                        a.Show();
-                        Close();
+
+                            adminwindow a = new adminwindow();
+                            a.Show();
+                            Close();
+                        }
+                        else MessageBox.Show("Попробуйте еще раз!", "Вы ввели неверный  логин или пароль", MessageBoxButton.OK);
                     }
-                    else MessageBox.Show("Попробуйте еще раз!", "Вы ввели неверный  логин или пароль", MessageBoxButton.OK);
+
+
                 }
-
-
             }
-            }
+            catch { MessageBox.Show("Проверьте правильность введенных данных. Возможно, остались незаполненные поля", "что-то пошло не так!", MessageBoxButton.OK, MessageBoxImage.Error); }
+        }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            try { 
+          
 
-            using (FileStream fs = new FileStream("logger.txt", FileMode.Create))
-
-            { fs.Close(); }
-            
             logger.log("sign up");
 
 
 
             string[] line = File.ReadAllLines("log.txt", Encoding.GetEncoding(1251));
-            if (line.Count() == 0)
+                string pas = passwordBox.Password;
+                string log = textBox.Text;
+             
+                if (line.Count() == 0&& !String.IsNullOrWhiteSpace(textBox.Text) && !String.IsNullOrWhiteSpace(passwordBox.Password))
             {
 
                 string password = Log.comparing(passwordBox.Password);
+                    
                 using (FileStream fs = new FileStream("log.txt", FileMode.Create))
                 {
                     using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
@@ -110,6 +116,10 @@ namespace shop
                 }
                 MessageBox.Show("Вы зарегистрировались", "Ура!", MessageBoxButton.OK);
             }
+            else if((String.IsNullOrWhiteSpace(log)||(String.IsNullOrWhiteSpace(pas))))
+                {
+                    MessageBox.Show("Проверьте правильность введенных данных. Возможно, остались незаполненные поля", "что-то пошло не так!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             else
 
             {
@@ -117,8 +127,9 @@ namespace shop
                 MessageBox.Show("Введите логин и пароль для авторизации и нажмите login", "Вы уже авторизированы", MessageBoxButton.OK);
 
             }
-        
 
+            }
+            catch { MessageBox.Show("Проверьте правильность введенных данных. Возможно, остались незаполненные поля", "что-то пошло не так!", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
     

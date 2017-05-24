@@ -93,7 +93,9 @@ namespace shop
                 using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
                 {
                     sw.WriteLine(this.name+"|"+this.adress+"|"+this.email);
+                    sw.Close();
                 }
+                fs.Close();
             }
 
 

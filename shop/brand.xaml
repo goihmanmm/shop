@@ -10,8 +10,12 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="446" Margin="10,10,0,0">
             <TabItem Header="Вывод информации" Height="22" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="show" Content="Вывести" HorizontalAlignment="Left" Margin="181,250,0,0" VerticalAlignment="Top" Width="75" Click="show_Click"/>
-                    <ListBox x:Name="main" HorizontalAlignment="Left" Height="235" Margin="10,10,0,0" VerticalAlignment="Top" Width="420"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="183*"/>
+                        <ColumnDefinition Width="257*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="show" Content="Вывести" HorizontalAlignment="Left" Margin="181,250,0,0" VerticalAlignment="Top" Width="75" Click="show_Click" Grid.ColumnSpan="2"/>
+                    <ListBox x:Name="main" HorizontalAlignment="Left" Height="235" Margin="10,10,0,0" VerticalAlignment="Top" Width="420" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Добавление бренда">
@@ -30,6 +34,7 @@
                     <Button x:Name="search" Content="Найти" HorizontalAlignment="Left" Margin="182,250,0,0" VerticalAlignment="Top" Width="75" Click="search_Click"/>
                     <TextBox x:Name="searchbr" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="420" Margin="10,43,0,0"/>
                     <ListBox x:Name="Search" HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="420" Margin="10,87,0,0"/>
+                    <Label x:Name="label6" Content="Введите название бренда" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="224"/>
                 </Grid>
             </TabItem>
 

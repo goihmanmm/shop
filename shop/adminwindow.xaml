@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         Title="adminwindow" Height="543" Width="1285.5" ResizeMode="CanResizeWithGrip">
     <Grid>
-        <ListBox x:Name="main" HorizontalAlignment="Left" Height="468" VerticalAlignment="Top" Width="662" Margin="606,10,0,0" Background="#FFF5FFFD"/>
-        <Button x:Name="show" Content="Вывести" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,43,0,0" Height="39" Click="button1_Click" FontSize="14"/>
-        <Button x:Name="search" Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,100,0,0" Height="40" Click="button2_Click" FontSize="14"/>
-        <Button x:Name="add" ToolTip="Введите свойства добавляемого товара в поле добавление/удаление" Content="Добавить товар" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Margin="60,160,0,0" Height="40" Click="add_Click" FontSize="14"/>
-        <Button x:Name="delete"  ToolTip="Введите свойства удаляемого товара в поле добавление/удаление" Content="Удалить выбранный товар" HorizontalAlignment="Left" Margin="60,219,0,0" VerticalAlignment="Top" Width="198" Height="46" Click="delete_Click" FontSize="14"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="468" Margin="314,10,0,0" VerticalAlignment="Top" Width="262">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="317*"/>
+            <ColumnDefinition Width="961*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="main" HorizontalAlignment="Left" Height="468" VerticalAlignment="Top" Width="552" Margin="399,10,0,0" Background="#FFF5FFFD" Grid.Column="1"/>
+        <Button x:Name="show" Content="Вывести базу данных товаров" HorizontalAlignment="Left" VerticalAlignment="Top" Width="248" Margin="10,10,0,0" Height="27" Click="button1_Click" FontSize="14"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="468" Margin="282,10,0,0" VerticalAlignment="Top" Width="412" Grid.ColumnSpan="2">
             <TabItem Header="Поиск" Margin="-2,-2,-53,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -23,44 +24,81 @@
                         <ColumnDefinition Width="25*"/>
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="type" HorizontalAlignment="Left" Height="29" Margin="23,82,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14"/>
-                    <TextBox x:Name="price" HorizontalAlignment="Left" Height="30" Margin="23,160,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14"/>
-                    <TextBox x:Name="color" HorizontalAlignment="Left" Height="28" Margin="23,228,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14"/>
-                    <TextBox x:Name="size" HorizontalAlignment="Left" Height="28" Margin="23,294,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14"/>
+                    <TextBox x:Name="type" HorizontalAlignment="Left" Height="29" Margin="23,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14" Text="0"/>
+                    <TextBox x:Name="price" HorizontalAlignment="Left" Height="30" Margin="23,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14" Text="0"/>
+                    <TextBox x:Name="color" HorizontalAlignment="Left" Height="28" Margin="23,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14" Text="0"/>
+                    <TextBox x:Name="size" HorizontalAlignment="Left" Height="28" Margin="23,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Grid.ColumnSpan="5" FontSize="14" Text="0"/>
                     <Label x:Name="label1" Content="Тип" HorizontalAlignment="Left" Margin="23,49,0,0" VerticalAlignment="Top" Height="28"/>
                     <Label x:Name="label1_Copy" Content="Цена" HorizontalAlignment="Left" Margin="23,127,0,0" VerticalAlignment="Top" Height="28"/>
                     <Label x:Name="label1_Copy1" Content="Цвет" HorizontalAlignment="Left" Margin="22,195,0,0" VerticalAlignment="Top" Height="28"/>
                     <Label x:Name="label1_Copy2" Content="Размер" HorizontalAlignment="Left" Margin="22,261,0,0" VerticalAlignment="Top" Height="28"/>
-                    <Label x:Name="label1_Copy3" Content="Если поле вас не интересует, оставьте &quot;0&quot;" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="240" Grid.ColumnSpan="6"/>
+                    <Label x:Name="label1_Copy3" Content="Если поле вас не интересует, оставьте в нем &quot;0&quot;" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="323" Grid.ColumnSpan="4"/>
                     <TextBox x:Name="bname" Grid.ColumnSpan="5" HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Margin="22,360,0,0" Text="0"/>
                     <Label x:Name="label1_Copy4" Content="Название бренда" HorizontalAlignment="Left" Margin="22,327,0,0" VerticalAlignment="Top" Height="28" Grid.ColumnSpan="2" Width="134"/>
+                    <Button x:Name="search" Content="Найти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="0,82,0,0" Height="309" Click="button2_Click" FontSize="14" Grid.ColumnSpan="2" Grid.Column="2"/>
                 </Grid>
             </TabItem>
+
+
+
             <TabItem Header="Добавление/удаление" HorizontalAlignment="Right" Width="154" Margin="0,0,-53,-2">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="223*"/>
+                        <ColumnDefinition Width="61*"/>
+                        <ColumnDefinition Width="28*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="type2" HorizontalAlignment="Left" Height="25" Margin="10,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" FontSize="14" Grid.ColumnSpan="3" TextChanged="type2_TextChanged"  Text="{Binding Path=Type}"/>
+                    <TextBox x:Name="size2" HorizontalAlignment="Left" Height="26" Margin="10,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" FontSize="14" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="color2" HorizontalAlignment="Left" Height="26" Margin="10,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="price2" HorizontalAlignment="Left" Height="28" Margin="10,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="quantity2" HorizontalAlignment="Left" Height="28" Margin="10,386,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" Grid.ColumnSpan="3"/>
+                    <Label x:Name="label" Content="Тип" HorizontalAlignment="Left" Margin="1,31,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="label_Copy" Content="Размер" HorizontalAlignment="Left" Margin="1,92,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="label_Copy1" Content="Цвет" HorizontalAlignment="Left" Margin="0,154,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="label_Copy2" Content="Цена" HorizontalAlignment="Left" Margin="1,279,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="label_Copy3" Content="Количество" HorizontalAlignment="Left" Margin="0,355,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="bname2" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" Margin="10,251,0,0"/>
+                    <Label x:Name="label_Copy4" Content="Название бренда" HorizontalAlignment="Left" Margin="1,216,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2" Width="123"/>
+                    <Button x:Name="add" ToolTip="Введите свойства добавляемого товара в поле добавление/удаление" Content="Добавить товар" HorizontalAlignment="Left" VerticalAlignment="Top" Width="197" Margin="105,62,0,0" Height="149" Click="add_Click" FontSize="14" Grid.ColumnSpan="3" Grid.Column="2"/>
+                    <Button x:Name="delete"  ToolTip="Введите свойства удаляемого товара в поле добавление/удаление" Content="Удалить выбранный товар" HorizontalAlignment="Left" Margin="105,251,0,0" VerticalAlignment="Top" Width="197" Height="163" Click="delete_Click" FontSize="14" Grid.ColumnSpan="3" Grid.Column="2"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Покупка" HorizontalAlignment="Right" Width="154" Margin="0,0,-53,-2">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="12*"/>
                         <ColumnDefinition Width="47*"/>
                         <ColumnDefinition Width="197*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="type2" HorizontalAlignment="Left" Height="25" Margin="10,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontSize="14" Grid.ColumnSpan="3"/>
-                    <TextBox x:Name="size2" HorizontalAlignment="Left" Height="26" Margin="10,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontSize="14" Grid.ColumnSpan="3"/>
-                    <TextBox x:Name="color2" HorizontalAlignment="Left" Height="26" Margin="10,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Grid.ColumnSpan="3"/>
-                    <TextBox x:Name="price2" HorizontalAlignment="Left" Height="42" Margin="10,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Grid.ColumnSpan="3"/>
-                    <TextBox x:Name="quantity2" HorizontalAlignment="Left" Height="39" Margin="10,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Grid.ColumnSpan="3"/>
-                    <Label x:Name="label" Content="Тип" HorizontalAlignment="Left" Margin="1,31,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label x:Name="label_Copy" Content="Размер" HorizontalAlignment="Left" Margin="1,92,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <Label x:Name="label_Copy1" Content="Цвет" HorizontalAlignment="Left" Margin="0,154,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label x:Name="label_Copy2" Content="Цена" HorizontalAlignment="Left" Margin="1,279,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label x:Name="label_Copy3" Content="Количество" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-                    <TextBox x:Name="bname2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Grid.Column="1" Margin="1,246,0,0"/>
-                    <Label x:Name="label_Copy4" Content="Название бренда" HorizontalAlignment="Left" Margin="1,216,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="2" Width="123"/>
+                    <TextBox x:Name="type3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Margin="10,36,0,0"/>
+                    <TextBox x:Name="size3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Margin="10,98,0,0"/>
+                    <TextBox x:Name="color3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Margin="10,158,0,0"/>
+                    <TextBox x:Name="bname3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Margin="10,222,0,0"/>
+                    <TextBox x:Name="price3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Margin="10,292,0,0"/>
+                    <TextBox x:Name="quantity3" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Margin="10,354,0,0"/>
+                    <TextBox x:Name="username" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Margin="10,412,0,0"/>
+                    <Label x:Name="label2" Content="Введите название продукта" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.632,0.904" Margin="10,10,0,0" Grid.ColumnSpan="3" Width="163"/>
+                    <Label x:Name="label2_Copy" Content="Введите размер" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.632,0.904" Margin="10,67,0,0" Grid.ColumnSpan="3" Width="163"/>
+                    <Label x:Name="label2_Copy1" Content="Введите цвет" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.632,0.904" Margin="10,132,0,0" Grid.ColumnSpan="3" Width="163"/>
+                    <Label x:Name="label2_Copy2" Content="Введите бренд" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.632,0.904" Margin="10,196,0,0" Grid.ColumnSpan="3" Width="163"/>
+                    <Label x:Name="label2_Copy3" Content="Введите цену" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.632,0.904" Margin="10,266,0,0" Grid.ColumnSpan="3" Width="163"/>
+                    <Label x:Name="label2_Copy4" Content="Введите количество" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.632,0.904" Margin="10,328,0,0" Grid.ColumnSpan="3" Width="163"/>
+                    <Label x:Name="label2_Copy5" Content="Введите имя покупателя" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.632,0.904" Margin="10,381,0,0" Grid.ColumnSpan="3" Width="163"/>
+                    <Button x:Name="buy" Content="Продать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="62" Margin="226,19,0,0" Height="411" Click="buy_Click" Grid.Column="2"/>
+
                 </Grid>
             </TabItem>
+
         </TabControl>
-        <Button x:Name="clear" Content="Очистить поле" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="124,285,0,0" Height="26" Click="clear_Click" FontSize="14"/>
-        <Button x:Name="log" Content="Сменить пользователя" HorizontalAlignment="Left" Margin="60,387,0,0" VerticalAlignment="Top" Width="198" Height="51" Click="log_Click" Background="#FF16DEDE" FontSize="14"/>
-        <Button x:Name="button" Content="Сброс программы" HorizontalAlignment="Left" Margin="60,443,0,0" VerticalAlignment="Top" Width="198" Height="35" Background="#FFFF4629" FontSize="14" Click="button_Click_1"/>
-        <Button x:Name="brand" Content="Работа с брендами" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="124,332,0,0" Height="34" Click="brand_Click"/>
+        <Button x:Name="clear" Content="Очистить поле" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,42,0,0" Height="26" Click="clear_Click" FontSize="13"/>
+        <Button x:Name="log" Content="Сменить пользователя" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Width="248" Height="51" Click="log_Click" Background="#FF16DEDE" FontSize="14"/>
+        <Button x:Name="button" Content="Сброс программы" HorizontalAlignment="Left" Margin="10,443,0,0" VerticalAlignment="Top" Width="248" Height="35" Background="#FFFF4629" FontSize="14" Click="button_Click_1"/>
+        <Button x:Name="brand" Content="Работа с брендами" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Margin="135,42,0,0" Height="26" Click="brand_Click" FontSize="13"/>
+        <Button x:Name="buyers" Content="Вывести базу данных покупателей" HorizontalAlignment="Left" VerticalAlignment="Top" Width="248" Margin="10,73,0,0" Height="27" FontSize="13" Click="buyers_Click"/>
+        <ListBox x:Name="buyerslook" HorizontalAlignment="Left" Height="277" VerticalAlignment="Top" Width="248" Margin="10,105,0,0"/>
     </Grid>
 </Window>
