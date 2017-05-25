@@ -37,12 +37,14 @@ namespace shop
                 List<clothes> BD = new List<clothes>();
 
                 BD = clothes.get();
+                logger.log("adminwindow вывести метод get");
                 foreach (clothes element in BD)
                 {
                     main.Items.Add(element.show());
                 }
+                logger.log("adminwindow вывод осущетсвлен");
             }
-            catch { MessageBox.Show("Возможно, повредился файл, попробуйте выполнить сброс программы", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); }
+            catch { MessageBox.Show("Возможно, повредился файл, попробуйте выполнить сброс программы", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); logger.log("adminwindow вывести ошибка"); }
         }
 
 
@@ -65,16 +67,19 @@ namespace shop
 
 
                 clothes.search(t, p, c, s, b);
+                logger.log("adminwindow поиск метод search");
 
                 main.Items.Clear();
                 List<clothes> BD = new List<clothes>();
                 BD = clothes.getsearch();
+                logger.log("adminwindow поиск метод getsearch");
                 foreach (clothes element in BD)
                 {
                     main.Items.Add(element.show());
                 }
+                logger.log("adminwindow поиск выход из цикла");
             }
-            catch { MessageBox.Show("Убедитесь в правильности введенных данных. Цена должна быть целочисленной", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); };
+            catch { MessageBox.Show("Убедитесь в правильности введенных данных. Цена должна быть целочисленной", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); logger.log("adminwindow поиск ошибка"); };
 
 
         }
@@ -90,17 +95,21 @@ namespace shop
 
                 clothes element = new clothes(type2.Text, size2.Text, color2.Text, bname2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
                 element.add();
+                logger.log("adminwindow добавить метод add");
                 clothes.read();
+                logger.log("adminwindow добавить метод read");
                 main.Items.Clear();
                 List<clothes> BD = new List<clothes>();
 
+
                 BD = clothes.get();
+                logger.log("adminwindow добавить метод get");
                 foreach (clothes elem in BD)
                 {
                     main.Items.Add(elem.show());
                 }
             }
-            catch { MessageBox.Show("Убедитесь в правильности введенных данных.", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); };
+            catch { MessageBox.Show("Убедитесь в правильности введенных данных.", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); logger.log("adminwindow добавить ошибка"); };
 
 
         }
@@ -113,17 +122,21 @@ namespace shop
                 logger.log("adminwindow удалить");
                 clothes element = new clothes(type2.Text, size2.Text, color2.Text, bname2.Text, int.Parse(price2.Text), int.Parse(quantity2.Text));
                 element.delete();
+                logger.log("adminwindow удалить метод delete");
                 clothes.read();
+                logger.log("adminwindow удалить метод read");
                 main.Items.Clear();
                 List<clothes> BD = new List<clothes>();
 
                 BD = clothes.get();
+                logger.log("adminwindow удалить метод dget");
                 foreach (clothes elemen in BD)
                 {
                     main.Items.Add(elemen.show());
                 }
             }catch { MessageBox.Show("Убедитесь в правильности введенных данных.", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-        };
+                logger.log("adminwindow удалить ошибка");
+            };
     }
 
         private void clear_Click(object sender, RoutedEventArgs e)
@@ -168,7 +181,9 @@ namespace shop
                 List<Buyer> Buyers = new List<Buyer>();
                 List<clothes> cheking = new List<clothes>();
                 Buyers = Buyer.get();
+                logger.log("adminwindow купить метод clothes.get");
                 cheking = clothes.get();
+                logger.log("adminwindow купить метод get");
 
                 clothes.buy(type3.Text, size3.Text, color3.Text, bname3.Text, int.Parse(price3.Text), int.Parse(quantity3.Text));
                 string name = username.Text;
@@ -178,22 +193,26 @@ namespace shop
                     if (el.Type == type3.Text && el.Size == size3.Text && el.Color == color3.Text && el.Bname == bname3.Text && el.Price == int.Parse(price3.Text) && el.Quantity >= int.Parse(quantity3.Text))
                     {
                         i = true;
+                        logger.log("adminwindow купить if1");
                     }
                 }
 
                 if (i == true)
                 {
                     bool ok = false;
+                    logger.log("adminwindow купить if2");
                     foreach (Buyer element in Buyers)
                     {
                         if (element.Name == name)
                         {
                             ok = true;
+                            logger.log("adminwindow купить if3");
                             element.buy(new clothes(type3.Text, size3.Text, color3.Text, bname3.Text, int.Parse(price3.Text), int.Parse(quantity3.Text)));
                         }
                     }
                     if (ok == false)
                     {
+                        logger.log("adminwindow купить if4");
                         Buyer buyer = new Buyer(name);
                         clothes c = new clothes(type3.Text, size3.Text, color3.Text, bname3.Text, int.Parse(price3.Text), int.Parse(quantity3.Text));
                         buyer.buy(c);
@@ -222,7 +241,9 @@ namespace shop
                 {
                     main.Items.Add(elementus.show());
                 }
-            }catch { MessageBox.Show("Убедитесь в правильности введенных данных.", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                logger.log("adminwindow купить вывод остатка");
+            }
+            catch { MessageBox.Show("Убедитесь в правильности введенных данных.", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
         };
     }
 
@@ -231,11 +252,11 @@ namespace shop
             try
             {
                 logger.log("adminwindow вывести базу данных клиентов");
-                Buyer.read();
+                Buyer.read(); logger.log("adminwindow вывести базу данных метод read");
                 buyerslook.Items.Clear();
                 List<Buyer> BDclients = new List<Buyer>();
 
-                BDclients = Buyer.get();
+                BDclients = Buyer.get(); logger.log("adminwindow вывести базу данных метод get");
                 foreach (Buyer element in BDclients)
                 {
                     buyerslook.Items.Add(element.show());
@@ -244,15 +265,13 @@ namespace shop
                         buyerslook.Items.Add(item.show());
                     }
                 }
+                logger.log("adminwindow вывести базу данных dsdjl");
             }
             catch { MessageBox.Show("Возможно, программа повреждена,попробуйте выполнить сброс программы", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); };
 
 
         }
 
-        private void type2_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+       
     }
 }
