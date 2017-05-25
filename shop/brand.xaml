@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:shop"
         mc:Ignorable="d"
-        Title="brand" Height="359.302" Width="472.094" ResizeMode="NoResize">
+        Title="Окно работы с брендами" Height="359.302" Width="472.094" ResizeMode="NoResize" Icon="cart.png">
     <Grid>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="446" Margin="10,10,0,0">
             <TabItem Header="Вывод информации" Height="22" VerticalAlignment="Top">

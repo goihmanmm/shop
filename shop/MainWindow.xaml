@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:shop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="519" Width="801" ResizeMode="CanMinimize">
+        Title="Авторизация" Height="519" Width="801" ResizeMode="CanMinimize" Icon="cart.png">
     <Grid Margin="2,0,0,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="234*"/>
             <ColumnDefinition Width="557*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="sign_in" Content="Sign in" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Margin="180,306,0,0" Height="64" Click="button_Click" FontSize="18" MouseEnter="sign_in_MouseEnter_1" MouseLeave="sign_in_MouseLeave" Grid.Column="1"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Margin="129,105,0,0" Background="White" TextChanged="textBox_TextChanged" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Margin="129,105,0,0" Background="White" TextChanged="textBox_TextChanged" Grid.ColumnSpan="2" FontSize="18"/>
         <Label x:Name="label" Content="Логин  (если хотите зайти как гость, введите &quot;guest&quot; и нажмите sign in)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="129,46,0,0" Width="500" Height="44" Foreground="#FF0D0DE2" Background="#FFEACDEA" Grid.ColumnSpan="2"/>
         <Label x:Name="label_Copy" Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="129,160,0,0" Width="500" Height="44" Foreground="#FF0D0DE2" Background="#FFEACDEA" Grid.ColumnSpan="2"/>
         <Button x:Name="sign_up" ToolTip="Если вы хотите зарегистрироваться, введите логин и пароль и нажмите Sign up" Content="Sign up" HorizontalAlignment="Left" Margin="168,306,0,0" VerticalAlignment="Top" Width="160" Height="64" Click="button1_Click" FontSize="18" MouseEnter="sign_up_MouseEnter" MouseLeave="sign_up_MouseLeave" Grid.ColumnSpan="2"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="129,226,0,0" Width="500" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Margin="129,226,0,0" Width="500" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="18"/>
         <Label x:Name="label2" Content="Если вы еще не зарегистрированы, введите логин и пароль и нажмите &quot;Sign up&quot;" HorizontalAlignment="Left" Margin="111,397,0,0" VerticalAlignment="Top" Width="527" RenderTransformOrigin="0.5,0.5" FontSize="14" Grid.ColumnSpan="2">
             <Label.RenderTransform>
                 <TransformGroup>

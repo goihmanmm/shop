@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:shop"
         mc:Ignorable="d"
-        Title="guestwindow" Height="604.5" Width="1020
-        ">
+        Title="Окно гостя" Height="604.5" Width="1020
+        " Icon="cart.png">
 
 
     <Grid>
