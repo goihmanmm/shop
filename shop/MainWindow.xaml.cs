@@ -21,7 +21,7 @@ namespace shop
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+    /// </summary>а
     public partial class MainWindow : Window
     {
       
@@ -51,21 +51,26 @@ namespace shop
                     a.Show();
                     Close();
 
+                    logger.log("sign in guest");
                 }
                 else
                 {
 
 
+                    logger.log("sign in else");
                     string[] line = File.ReadAllLines("log.txt", Encoding.GetEncoding(1251));
 
 
                     if (line.Count() == 0)
                     {
+
+                        logger.log("sign in новый пользователь");
                         MessageBox.Show("Введите логин и пароль для авторизации", "Вы вошли в первый раз", MessageBoxButton.OK);
 
                     }
                     else
                     {
+                        logger.log("sign in существующуй пользователь");
 
                         string[] mas = line[0].Split(' ');
 
@@ -75,6 +80,7 @@ namespace shop
                         {
 
 
+                            logger.log("sign in совпадение");
 
                             adminwindow a = new adminwindow();
                             a.Show();
@@ -104,8 +110,8 @@ namespace shop
              
                 if (line.Count() == 0&& !String.IsNullOrWhiteSpace(textBox.Text) && !String.IsNullOrWhiteSpace(passwordBox.Password))
             {
-
-                string password = Log.comparing(passwordBox.Password);
+                    logger.log("sign up новый пользователь и поля заполнены");
+                    string password = Log.comparing(passwordBox.Password);
                     
                 using (FileStream fs = new FileStream("log.txt", FileMode.Create))
                 {
