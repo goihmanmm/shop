@@ -35,11 +35,9 @@ namespace shop
             fk.Close();
             FileStream fn = new FileStream("buyers.txt", FileMode.Create);
             fk.Close();
-            FileStream fl = new FileStream("brand.txt", FileMode.Create);
-            fk.Close();
-            Close();
-            adminwindow a = new adminwindow();
-            a.Close();
+            using (FileStream fm = new FileStream("brands.dat", FileMode.Create))
+                Close();
+            
         }
     }
 }

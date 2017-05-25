@@ -4,10 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace shop
 {
-    class Brand
+    [Serializable]
+   
+    class Brand 
     {
         static  List<Brand> BD = new List<Brand>();
         private string name;
@@ -41,20 +46,25 @@ namespace shop
             this.email = email;
 
         }
+        public Brand() { }
 
         public static void  read()
             
             {
+            
+            
             BD.Clear();
 
-            string[] line = File.ReadAllLines("brand.txt", Encoding.GetEncoding(1251));
-            for (int i = 0; i < line.Length; i++)
+            
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("brands.dat", FileMode.OpenOrCreate))
             {
-                string[] mas = line[i].Split('|');
-                Brand element = new Brand(mas[0], (mas[1]), (mas[2]));
-                BD.Add(element);
+              BD  = (List<Brand>)formatter.Deserialize(fs);
+
+                
             }
         }
+        
 
         public string show()
         {
@@ -87,15 +97,17 @@ namespace shop
 
         public void add()
         {
-
-            using (FileStream fs = new FileStream("brand.txt", FileMode.Append))
+            
+            BinaryFormatter formatter = new BinaryFormatter();
+            Brand adding = new Brand(this.name, this.adress,  this.email);
+            BD.Add(adding);
+            using (FileStream fs = new FileStream("brands.dat", FileMode.Create))
             {
-                using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
-                {
-                    sw.WriteLine(this.name+"|"+this.adress+"|"+this.email);
-                    sw.Close();
-                }
-                fs.Close();
+                
+                formatter.Serialize(fs, BD);
+                
+
+
             }
 
 
@@ -105,28 +117,36 @@ namespace shop
         {
 
             Brand.read();
-
-            using (FileStream fs = new FileStream("brand.txt", FileMode.Create))
-                
-                {
-                using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
-                {
-
-                    foreach (Brand element in BD)
-                    {
-                        if (name!=element.name || adress!=element.adress || email!=element.email)
-                        {
-                            sw.WriteLine(String.Format("{0}|{1}|{2}",element.name, element.adress,element.email));
-                        }
-                    }
-                    sw.Close();
-                };
-                fs.Close();
-            };
-                   
-                
+         
             
+            foreach ( Brand element in BD.ToArray())
+            {
+                if (name == element.name && adress == element.adress && email == element.email)
+                {
+                    BD.Remove(element);
+                }
+            }
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("brands.dat", FileMode.Create))
+            {
+               
+                formatter.Serialize(fs, BD);
+               
 
+
+            }
+
+
+
+
+
+
+
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }

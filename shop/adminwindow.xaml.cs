@@ -74,7 +74,7 @@ namespace shop
                     main.Items.Add(element.show());
                 }
             }
-            catch { MessageBox.Show("Убедитесь в правильности введенных данных. Цена должнf быть целочисленной", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); };
+            catch { MessageBox.Show("Убедитесь в правильности введенных данных. Цена должна быть целочисленной", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error); };
 
 
         }

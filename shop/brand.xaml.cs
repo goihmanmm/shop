@@ -43,8 +43,8 @@ namespace shop
         {
             logger.log("brand добавить");
 
-            try
-            {if (!String.IsNullOrWhiteSpace(addname.Text) && !String.IsNullOrWhiteSpace(addadress.Text) && !String.IsNullOrWhiteSpace(addname.Text))
+            try { 
+            if (!String.IsNullOrWhiteSpace(addname.Text) && !String.IsNullOrWhiteSpace(addadress.Text) && !String.IsNullOrWhiteSpace(addname.Text))
                 {
                     Brand element = new Brand(addname.Text, addadress.Text, addemail.Text);
                     element.add();
@@ -53,7 +53,7 @@ namespace shop
                 {
                     MessageBox.Show("Заполните все поля", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }catch { MessageBox.Show("Убедитесь, что все поля заполнены", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+          }catch { MessageBox.Show("Убедитесь, что все поля заполнены", "ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
         };
 
     }
